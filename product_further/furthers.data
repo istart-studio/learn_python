@@ -1,0 +1,5 @@
+#e-server|e-studio|e-customer|e-chart|e-app|,规划名称,新产品|新功能|优化|,further_wight,description
+e-customer,基于UK的B2B接口的海图售后平台,新产品,100,2018年重点方向
+e-server,api的异常包含请求的具体方法名,优化,10,不方便诊断
+e-chart,增加账号登录,优化,30,产品完善
+e-chart,封装成自己的sdk,新产品,70,可以作为新的赢利点供其他合作方使用
