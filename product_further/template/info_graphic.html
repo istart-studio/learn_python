@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+    <!-- Data Table -->
+    <Link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <script src="http://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        var dataSet = {json_data};
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <table id="data_table" class="display" width="100%">
+                <thead>
+                <th>product</th>
+                <th>further_name</th>
+                <th>further_type</th>
+                <th>further_wight</th>
+                <th>description</th>
+                <th>complete_time</th>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div id="chart_1" style="width: 1024px;height:450px;"></div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/echarts/3.8.5/echarts.js"></script>
+<script src="../view/script.js"></script>
+</html>

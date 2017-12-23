@@ -1,7 +1,8 @@
+# -*- coding: utf-8 -*-
 import json
 
 
-#json对象，继承后方便json序列化及反序列化
+# json对象，继承后方便json序列化及反序列化
 class JsonObject(object):
 
     def to_json(self):

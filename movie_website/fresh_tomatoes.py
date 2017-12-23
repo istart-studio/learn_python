@@ -130,7 +130,7 @@ __movie_tile_content = '''
     '''
 
 
-# 根据电影，构建可视化内容
+# 根据电影信息，构建可视化html内容
 def __create_movie_tiles_content(movies):
     # The HTML content for this section of the page
     content = ''
@@ -156,7 +156,9 @@ def __create_movie_tiles_content(movies):
     return content
 
 
-# 加载电影数据
+# 1.加载电影数据
+# 2.将最终呈现的内容保存至本地文件fresh_tomatoes.html
+# 3.通过浏览器访问本地文件fresh_tomatoes.html
 def open_movies_page(movies):
     # Create or overwrite the output file
     output_file = open('fresh_tomatoes.html', 'w')
