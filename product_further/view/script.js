@@ -12,12 +12,66 @@ $(document).ready(function () {
     });
 });
 
+//按产品分类
+var dict = new Array();
+for (var index in dataSet) {
+    var item = dataSet[index];
+    if (dict[item.product] == null) {
+        dict[item.product] = [];
+    }
+    dict[item.product].push([new Date(item.complete_time), item.further_wight, item.further_name, item.further_type, item.description]);
+}
+console.log(dict);
+
+//整合后的数据带入了图形中
+
+var chart_legned = [];
+var chart_data = [];
+var symbols = ['circle', 'rect', 'roundRect', 'triangle', 'diamond', 'pin', 'arrow'];
+for (var key in dict) {
+    var series_item = {
+        name: '产品名',
+        type: 'scatter',
+        tooltip: {
+            trigger: 'item',
+            formatter: function (params) {
+                //[2.further_name, 3.further_type, 1.further_wight, 4.description, 0.complete_time]
+                return '[' + params.seriesName + ']'
+                    + '[' + params.value[2] + ']'
+                    + '[' + params.value[3] + ']'
+                    + '<br/>'
+                    + params.value[4];
+            },
+            axisPointer: {
+                type: 'cross',
+                lineStyle: {
+                    type: 'dashed',
+                    width: 1
+                }
+            }
+        },
+        //标识形状 ，产品
+        symbol: 'circle',
+        //标识尺寸，权重
+        symbolSize: function (value) {
+            return Math.round(parseInt(value[1]));
+        },
+        data: []
+    };
+    //setting
+    chart_legned.push(key);
+    series_item.name = key;
+    series_item.symbol = 'circle';
+    series_item.data = dict[key];
+    chart_data.push(series_item);
+}
+console.log(chart_data);
 
 var myChart = echarts.init(document.getElementById('chart_1'));
 var option = {
     title: {
-        text: '时间坐标散点图',
-        subtext: 'dataZoom支持'
+        text: '任务散点图',
+        subtext: '2018年'
     },
     tooltip: {
         trigger: 'axis',
@@ -39,22 +93,13 @@ var option = {
             saveAsImage: {show: true}
         }
     },
-    dataZoom: {
-        show: true,
-        start: 30,
-        end: 70
-    },
+    // dataZoom: {
+    //     show: true,
+    //     start: 20,
+    //     end: 80
+    // },
     legend: {
-        data: ['e-server', 'e-studio']
-    },
-    dataRange: {
-        min: 0,
-        max: 100,
-        orient: 'horizontal',
-        y: 30,
-        x: 'center',
-        color: ['orange', 'lightgreen'],
-        splitNumber: 5
+        data: chart_legned//['e-server']
     },
     grid: {
         y2: 80
@@ -64,7 +109,7 @@ var option = {
             type: 'time',
             min: new Date(2018, 0),
             max: new Date(2018, 12),
-            splitNumber: 12,
+            splitNumber: 6,
         }
     ],
     yAxis: [
@@ -73,108 +118,7 @@ var option = {
         }
     ],
     animation: false,
-    series: [
-        {
-            name: 'e-server',
-            type: 'scatter',
-            tooltip: {
-                trigger: 'axis',
-                formatter: function (params) {
-                    var date = new Date(params.value[0]);
-                    return params.seriesName
-                        + ' （'
-                        + date.getFullYear() + '-'
-                        + (date.getMonth() + 1) + '-'
-                        + date.getDate() + ' '
-                        + date.getHours() + ':'
-                        + date.getMinutes()
-                        + '）<br/>'
-                        + params.value[1] + ', '
-                        + params.value[2];
-                },
-                axisPointer: {
-                    type: 'cross',
-                    lineStyle: {
-                        type: 'dashed',
-                        width: 1
-                    }
-                }
-            },
-            //标识尺寸
-            symbolSize: function (value) {
-                return Math.round(value[2] / 2);
-            },
-            // itemStyle: {
-            //     normal: {
-            //         color: function (param) {
-            //             return json[0].marker.color[param.dataIndex];
-            //         }
-            //     }
-            // },
-            data: (function () {
-                var d = [];
-                var len = 0;
-                var now = new Date();
-                var value;
-                while (len++ < 100) {
-                    d.push([
-                        new Date(2018, Math.floor(Math.random() * (12 - 1)) + 1, Math.floor(Math.random() * (28 - 1)) + 1),//完成时间
-                        (Math.random() * 1000).toFixed(2) - 0,//权重
-                        (Math.random() * 100).toFixed(2) - 0//任务总数？
-
-                    ]);
-                }
-                console.log(d);
-                return d;
-            })()
-        },
-        {
-            name: 'e-studio',
-            type: 'scatter',
-            tooltip: {
-                trigger: 'axis',
-                formatter: function (params) {
-                    var date = new Date(params.value[0]);
-                    return params.seriesName
-                        + ' （'
-                        + date.getFullYear() + '-'
-                        + (date.getMonth() + 1) + '-'
-                        + date.getDate() + ' '
-                        + date.getHours() + ':'
-                        + date.getMinutes()
-                        + '）<br/>'
-                        + params.value[1] + ', '
-                        + params.value[2];
-                },
-                axisPointer: {
-                    type: 'cross',
-                    lineStyle: {
-                        type: 'dashed',
-                        width: 1
-                    }
-                }
-            },
-            //标识尺寸，权重
-            symbolSize: function (value) {
-                return Math.round(value[2] / 10);
-            },
-            data: (function () {
-                var d = [];
-                var len = 0;
-                var now = new Date();
-                var value;
-                while (len++ < 100) {
-                    d.push([
-                        new Date(2018, Math.floor(Math.random() * (12 - 1)) + 1, Math.floor(Math.random() * (28 - 1)) + 1),
-                        (Math.random() * 30).toFixed(2) - 0,
-                        (Math.random() * 100).toFixed(2) - 0
-                    ]);
-                }
-                console.log(d);
-                return d;
-            })()
-        }
-    ]
+    series: chart_data
 };
 
 myChart.setOption(option);
