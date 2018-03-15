@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Fresh Tomatoes!</title>
+
+    <!-- Bootstrap 3 -->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap-theme.min.css">
+    <script src="https://cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+
+    <!-- Data Table -->
+    <Link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css">
+    <script src="http://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript" charset="utf-8">
+        var dataSet = [{"product": "e-monitor", "description": "将海图和AIS目标的绘制分开，不再定时刷新海图，只定时刷新AIS目标，大幅降低CPU使用率", "complete_time": "2018-12-01", "further_name": "显示性能优化", "further_type": "优化", "further_wight": "20"}, {"product": "e-monitor", "description": "AIS支持http、tcp获取，", "complete_time": "2018-12-01", "further_name": "AIS采用新的模块进行获取与显示", "further_type": "优化", "further_wight": "30"}, {"product": "e-monitor", "description": "将SamAMS显示及设置界面添加至岸基客户端", "complete_time": "2018-09-01", "further_name": "AMS模块", "further_type": "新功能", "further_wight": "60"}, {"product": "e-monitor", "description": "通过分析气象信息进行报警", "complete_time": "2018-06-01", "further_name": "气象报警", "further_type": "新功能", "further_wight": "40"}, {"product": "e-monitor", "description": "jenkins建立自动构建并通过http推送至e-server api ，完成自动更新", "complete_time": "2018-06-01", "further_name": "自动化构建与推送", "further_type": "新功能", "further_wight": "30"}, {"product": "e-server", "description": "将报文等不定结构的结构数据通过配置进行分析统计，无需硬代码编辑", "complete_time": "2018-11-01", "further_name": "可配置的数据分析", "further_type": "新功能", "further_wight": "95"}, {"product": "e-server", "description": "针对C端用户，无缝粘合将现有数据通过微信平台发布", "complete_time": "2018-07-01", "further_name": "订阅与信息发布服务", "further_type": "优化", "further_wight": "85"}, {"product": "e-server", "description": "1.查询气象后返回的数组有问题 或 对该数组的读取顺序有问题<br/> 2.调研新气象接口 http://www.passageweather.com/ ", "complete_time": "2018-04-01", "further_name": "气象数据接口", "further_type": "优化", "further_wight": "50"}, {"product": "e-server", "description": "各个服务的运行状态，每次的运行结果，例如：报文接受服务，启动时间，结束时间，运行结果，ServerID", "complete_time": "2018-04-01", "further_name": "业务服务的监控", "further_type": "新功能", "further_wight": "70"}, {"product": "e-server", "description": "所有接口默认的USERTOKEN加入到Header中，服务端统一验证后在执行实际调用接口，并完善现有文档", "complete_time": "2018-09-01", "further_name": "接口公开化", "further_type": "新功能", "further_wight": "65"}, {"product": "e-server", "description": "基于深度学习完成并迭代一项数据模型，并获取有效样本进行持续训练", "complete_time": "2018-09-01", "further_name": "基于AI的数据分析", "further_type": "新功能", "further_wight": "80"}, {"product": "e-wechat", "description": "用户可通过微信公共号订阅公开的船舶，考试信息等", "complete_time": "2018-04-01", "further_name": "订阅界面", "further_type": "新产品", "further_wight": "80"}, {"product": "e-check-map", "description": "1、将带红×的海图删除。2、从接口上获取气象数据，并定时上传气象图层。", "complete_time": "2018-01-31", "further_name": "web海图数据图层优化", "further_type": "优化", "further_wight": "40"}, {"product": "e-check-map", "description": "自动同步控制端海图至所有切图端", "complete_time": "2018-11-30", "further_name": "分布式数据同步", "further_type": "优化", "further_wight": "30"}, {"product": "e-chart", "description": "产品完善", "complete_time": "2018-01-30", "further_name": "增加账号登录", "further_type": "优化", "further_wight": "30"}, {"product": "e-chart", "description": "可以作为新的赢利点供其他合作方使用", "complete_time": "2018-06-30", "further_name": "封装成自己的sdk", "further_type": "新产品", "further_wight": "70"}, {"product": "e-studio", "description": "版本列表中添加新版本时，可以复用之前上传的文字信息", "complete_time": "2018-03-27", "further_name": "客户端升级模块", "further_type": "新功能", "further_wight": "20"}, {"product": "e-studio", "description": "可查看所有船员信息及其考试记录", "complete_time": "2018-02-05", "further_name": "船员考试管理记录", "further_type": "新功能", "further_wight": "50"}, {"product": "e-studio", "description": "jenkins自动化构建并部署至服务器", "complete_time": "2018-03-21", "further_name": "自动化构建与部署", "further_type": "新功能", "further_wight": "60"}, {"product": "e-report", "description": "1.明确所有的数据类型，字符或数值;2.不在采用强对象类型，不允许出现复合对象:3.定义对象属性的命名规则（eg：下划线，驼峰）", "complete_time": "2018-06-01", "further_name": "数据结构调整与显示", "further_type": "优化", "further_wight": "70"}, {"product": "e-customer", "description": "1.结合UK的B2B接口，以海图服务为核心的业务平台;<br/>", "complete_time": "2018-12-30", "further_name": "海图平台", "further_type": "新功能", "further_wight": "70"}];
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row panel panel-default">
+        <div class="col-md-12 panel-body">
+            <table id="data_table" class="display" width="100%">
+                <thead>
+                <th>product</th>
+                <th>further_name</th>
+                <th>further_type</th>
+                <th>further_wight</th>
+                <th>description</th>
+                <th>complete_time</th>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <div class="row panel panel-default">
+        <div class="col-md-12 panel-body">
+            <div id="chart_1" style="width: 1024px;height:450px;"></div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="https://cdn.bootcss.com/echarts/3.8.5/echarts.js"></script>
+<script src="../view/script.js"></script>
+</html>
